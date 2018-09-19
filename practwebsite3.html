@@ -1,0 +1,159 @@
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="practwebsite3.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+<div id="IRDadmin">
+	<form id="loginform">
+		<label id="IRD">IRDadmin</label>
+		<i class="bellicon" style="position:relative right:10%"></i>
+		<i class="messagingicon" style="position:relative right:5%"></i>
+		<i class="fa fa-power-off" style="float:right" onclick="loadrightnav()"></i><nav class="dropdown1" style="float:right">
+		<ul id="rightnav" style="list-style-type:none">
+			<li>Logout</li>
+			<li>Settings</li>
+			<li>my profile</li>
+			<li>Hi xyz<li>
+		</ul>
+		</nav>
+	</form>   
+</div>
+<div id="diskspaceandmenu" style="float:left">
+<div id="dspc">Disk Space</div>
+<nav>
+	<ul class="tab" id="leftnav" style="list-style-type:none">
+		<li ><a class="tablink" href="#" id="loaddash" onclick="loaddashindiv()" ><i class="fa fa-Desktop"></i>&nbsp Dashboard</a></li>
+		<li><a class="tablink" href="#" id ="loadtables" onclick="loadtablesindiv()"><i class="fa fa-table"></i>&nbsp Tables</a></li>
+		<li><a class="tablink" href="#" id ="loadfoms"><i class="fa fa-wpforms"></i>&nbsp forms</a></li>
+		<li><a class="tablink" href="#" id ="loadUIFeatures"><i class="fa fa-pen-square"></i>&nbsp UIFeatures</a></li>
+		<li><a class="tablink" href="#" id ="loadtexts"><i class="fa fa-text-width"></i>&nbsp Texts</a></li>
+		<li><a class="tablink" href="#" id ="loadmedia"><i class="fa fa-image"></i>&nbsp Media</a></li>
+		<li><a class="tablink" href="#" id ="loadmessages"><i class="fa fa-envelope"></i>&nbsp Messages</a></li>
+		<li><a class="tablink" href="#" id ="loadchartsandgraphs"><i class="fa fa-chart-bar"></i>&nbsp Charts And Graphs</a></li>
+		
+	</ul>
+</nav>
+</div>
+
+<div id="linkeddiv" style="border:1px solid black" style="width:900px">
+</div>
+
+
+<div class="tabcontent" id="dashboardmapandcalendar" style="width:80%">
+<div id="dashboard" style="border:1px solid black width:auto">
+	<div id="dtext">Dashboard
+	
+	</div><br>
+	<div id="dashbuttons" style="width:auto">
+	<a id="b1"  value="Graphs" style="background-color:blue" href="#"><i class="fa fa-chart-bar" style="vertical-align:top  padding:0px" ></i><div style="vertical-align:bottom padding-bottom:25px">Graphs</div></a>
+	<a id="b2"   style="background-color:green" href="#"><i class="fa fa-image" "style=vertical-align:top text-align:center padding:0px"></i><div style="vertical-align:bottom">Gallery</div></a>
+	<a id="b3"  value="Notificlations" style="background-color:blue" href="#"><div style="vertical-align:bottom">Notifications</div></a>
+	<a id="b4"  value="Messages" style="background-color:cyan" href="#"><div style="vertical-align:bottom">Messages</div></a>
+	<a id="b5"  value="settings" style="background-color:yellow" href="#"><div style="vertical-align:bottom">Settings</div></a>
+	</div><br>
+	<div id="mapdiv" style="display:block float:left width:50% border:1px solid black"></div> 
+	<div id="calendardiv" style="float:left"><input type="datetime-local"><input></div>
+</div>
+	
+</div>
+
+<div class="tabcontent" id ="tables" style="width:80%">
+tables
+
+</div>
+
+</body>
+<script>
+var disp=false;
+function loadrightnav()
+{
+	alert("function load right nav");
+	//static var disp=true;
+	/*document.getElementById("#rightnav").setAttribute("display","block"); */
+	
+	if(disp)
+		{
+		document.getElementById("rightnav").style.display = "block";
+		disp=false;
+		}
+		else
+				{
+		document.getElementById("rightnav").style.display = "none";
+		disp=true;
+		}
+	
+}
+/*
+$("#loaddash").click(function(){
+    $("#linkeddiv").load("dashboard.html", function(responseTxt, statusTxt, xhr){
+        if(statusTxt == "success")
+            alert("External content loaded successfully!");
+        if(statusTxt == "error")
+            alert("Error: " + xhr.status + ": " + xhr.statusText);
+    });
+});
+*/
+/*
+$(document).ready(function(){
+
+$('#loaddash').click(function(){   
+	alert("loading dashboard");
+    $('#linkeddiv').load('dashboard.html');
+
+ });
+});
+*/
+
+
+function loaddashindiv() {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+	// alert("loading dash"); 
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+	//tabcontent = document.getElementById("dashboardmapandcalendar");
+	
+   for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+       tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById("dashboardmapandcalendar").style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function loadtablesindiv() {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+	//alert("loading tables");
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+	//tabcontent = document.getElementById("tables");   
+
+   for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById("tables").style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+</script>
+</html>
